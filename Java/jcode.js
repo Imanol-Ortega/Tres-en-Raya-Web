@@ -20,30 +20,26 @@ let gn=["0","0","0","0","0","0","0","0","0"];
 let turno=1;
 let emp=0;
 let cemp=0;
-let x=0,y=0;
 let gana=false;
+let x=0,y=0;
 let eljug=true;
 let abc=1;
+
+//Eventos listener
 
 document.querySelector(".jugX").addEventListener("mousedown",()=>{
     if(emp==0){
         abc=1;
         turno=abc;
         document.querySelector(".turn").innerHTML="Turno: X";
-    }else{
-        console.log("Ya se inicio el juego no se puede cambiarb");
     }
-    
 });
 document.querySelector(".jugO").addEventListener("mousedown",()=>{
     if(emp==0){
         abc=2;
         turno=abc;
         document.querySelector(".turn").innerHTML="Turno: O";
-    }else{
-        console.log("Ya se inicio el juego no se puede cambiara");
     }
-    
 });
 
 document.querySelector(".solo").addEventListener("mousedown",()=>{
@@ -53,7 +49,7 @@ document.querySelector(".solo").addEventListener("mousedown",()=>{
 });
 document.querySelector(".maq").addEventListener("mousedown",()=>{
     document.querySelector(".difi").style.visibility = "visible";
-    document.querySelector(".modojuego").innerHTML="Modo de juego: Contra maquina";
+    document.querySelector(".modojuego").innerHTML="Modo de juego: Contra máquina";
     dificultad.style.visibility="visible";
 });
 
@@ -68,11 +64,11 @@ document.querySelector(".dificil").addEventListener("mousedown",()=>{
     dificultad.innerHTML = "Dificultad: Dificil";
 });
 
-
-//Eventos listener
 document.querySelector(".reiniciar").addEventListener("click",()=>{
     limpiarP();
 });
+
+
 caja1.addEventListener("mousedown",e=>{
     insertImg(caja1,0);
 });
@@ -106,26 +102,13 @@ caja9.addEventListener("mousedown",e=>{
 //funciones 
 const insertImg= (caja,it)=>{
     if(tr[it]==false){     
-        let img = document.createElement("IMG");
         if(turno==1){
-            img.classList.add("img");
-            img.setAttribute("src","img/x.png");
-            caja.appendChild(img);
-            gn[it]="1";
-            turno=2;
-            x+=ganador("1","x");
-            document.querySelector(".x").innerHTML=`X: ${x}`;
-            document.querySelector(".turn").innerHTML="Turno: 0"; 
+          x=dibujar(it,caja,"x","1","O",1,2,x);
+          console.log("x");
         }
         else if(turno==2){
-            img.classList.add("img");
-            img.setAttribute("src","img/o.png");
-            caja.appendChild(img);
-            gn[it]="2";
-            turno=1;
-            y+=ganador("2","o");
-            document.querySelector(".o").innerHTML=`O: ${y/2}`;
-            document.querySelector(".turn").innerHTML="Turno: X";
+            y=dibujar(it,caja,"o","2","X",2,1,y);
+            console.log("o");
         }
         if(emp==9){
             cemp++;
@@ -136,6 +119,20 @@ const insertImg= (caja,it)=>{
         tr[it]=true;
     }
 }
+const dibujar = (it,caja,tf,nf,tr,d,trn,nn)=>{
+    let n=nn;
+    let img = document.createElement("IMG");
+    img.classList.add("img");
+    img.setAttribute("src",`img/${tf}.png`);
+    caja.appendChild(img);
+    gn[it]=nf;
+    turno=trn;
+    n+=ganador(nf,tf);
+    document.querySelector(`.${tf}`).innerHTML=`${tf.toUpperCase()}: ${n/d}`;
+    document.querySelector(".turn").innerHTML=`Turno: ${tr}`;
+    return n; 
+}
+
 const ganador=(n,t)=>{
     if(gn[0]==n && gn[4]==n && gn[8]==n){
         console.log(`${t} ganó`);
