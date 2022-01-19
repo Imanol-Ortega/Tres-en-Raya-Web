@@ -1,0 +1,251 @@
+*{
+    margin: 0;
+    padding: 0;
+    font: oblique bold 15px cursive;
+}
+h1{
+    font: oblique bold 25px cursive;
+}
+.menu{
+    width: 100%;
+    height: 30px;
+    z-index: 1;
+}
+nav ul{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    background: #777;
+}
+li{
+    width: 120px;
+}
+li,a{
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    color:#fff;
+}
+li:hover{
+    border-radius: 4px;
+    background: #333;
+    color: #ffff;
+}
+#title{
+    margin: auto;
+    margin-top: 40px;
+    border-bottom: 1px solid #000;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;
+    width: 800px;
+    height: 950px;
+    margin: auto auto auto auto;
+    background-color: #efefefef;
+    border-radius: 10px;
+    z-index: 1; 
+}
+.barra{
+    display: flex;
+    width: 800px;
+    height: 100px;
+}
+.options{
+    border: none;
+}
+.caja-tr{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    width: 606px;
+    height: 606px;
+    margin: auto;
+    margin-top: 1vh;
+    background: #fff;
+    z-index: 1;
+}
+.item{
+    border: 1px solid #000;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    margin: 0;
+    z-index: 1;
+}
+img{
+    margin: auto;
+    margin-left: 5px;
+    margin-top: 3px;
+    z-index: 1;
+}
+
+.informaciones{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+    align-content: stretch;
+    flex-direction: column;
+}
+
+
+.info{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    gap:10px;
+    margin:auto;
+    width: 500px;
+    height: 30px;
+    z-index:1;
+    padding: 20px;
+}
+.inf{
+    border-right: 1px solid #333;
+    margin: 5px;
+    padding: 1px;
+    width: 90px;
+    font: oblique bold 15px cursive;
+}
+.emp{
+    margin-left: 10px;
+}
+.difi{
+    visibility: hidden;
+}
+.dificultades{
+    visibility: hidden;
+}
+.reiniciar{
+    border: transparent ;
+    font: oblique bold 12px cursive;
+    color: #efefefef;
+    background: #999999;
+    border-radius: 3px;
+    width: 70px;
+    height: 30px;
+}
+.reiniciar:hover{
+    background: #fff;
+    color: #333;
+}
+.ganador{
+    position: absolute;
+    z-index: 10;
+    width: 300px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    text-align: center;
+    background: #fff;
+}
+.h1{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10%;
+    animation-name: animacion;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.submenu{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    background: #555;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+}
+.submenu .jug .li .a{
+    text-decoration: none;
+    z-index: 20;
+}
+.menues li:hover .submenu{
+    visibility: visible;
+    opacity: 1;
+}
+
+@keyframes animacion{
+    0%{
+        color: #f00;
+    }
+    10%{
+        color: #34f;
+    }
+    20%{
+        color: #f00;
+    }
+    30%{
+        color: #34f;
+    }
+    40%{
+        color: #f00;
+    }
+    50%{
+        color: #34f;
+    }
+    60%{
+        color: #f00;
+    }
+    70%{
+        color: #34f;
+    }
+    80%{
+        color: #f00;
+    }
+    90%{
+        color: #34f;
+    }
+    100%{
+        color: #f00;
+    }
+}
+
+@media (min-height: 1000px){
+    .caja-tr{
+        width: 607px;
+        height: 607px;
+    }
+}  
+@media (min-height: 1100px){
+    .caja-tr{
+        width: 608px;
+        height: 608px;
+    }
+}  
+@media (min-height: 1300px){
+    .caja-tr{
+        width: 609px;
+        height: 609px;
+    }
+}
+@media (min-height: 1800px){
+    .caja-tr{
+        width: 612px;
+        height: 612px;
+    }
+}
+@media (min-height: 2700px){
+    .caja-tr{
+        width: 618px;
+        height: 618px;
+    }
+}
+@media (min-height: 3700px){
+    .caja-tr{
+        width: 624px;
+        height: 624px;
+    }
+}
