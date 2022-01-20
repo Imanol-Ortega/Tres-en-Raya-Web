@@ -43,7 +43,7 @@ li:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 20px;
     border: 4px solid #fff;
     width: 800px;
     height: 950px;
@@ -65,8 +65,8 @@ li:hover{
     flex-wrap: wrap;
     align-items: stretch;
     justify-content: center;
-    width: 606px;
-    height: 606px;
+    width: 456px;
+    height: 456px;
     margin: auto;
     margin-top: 1vh;
     background: #fff;
@@ -74,11 +74,11 @@ li:hover{
 }
 .item{
     border: 1px solid #000;
-    min-width: 200px;
-    max-width: 200px;
-    min-height: 200px;
-    max-height: 200px;
-    margin: 0;
+    min-width: 150px;
+    max-width: 150px;
+    min-height: 150px;
+    max-height: 150px;
+    margin: auto;
     z-index: 1;
 }
 img{
@@ -89,11 +89,11 @@ img{
 }
 
 .informaciones{
+    width: 800px;
+    height: 300px;
+    gap: 30px;
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
     align-items: center;
-    align-content: stretch;
     flex-direction: column;
 }
 
@@ -103,16 +103,13 @@ img{
     justify-content:space-between;
     flex-wrap: wrap;
     flex-direction: row;
-    align-content: center;
-    gap:10px;
-    margin:auto;
+    align-items: center;
+    gap:20px;
     width: 500px;
-    height: 30px;
     z-index:1;
     padding: 20px;
 }
 .inf{
-    border-right: 1px solid #333;
     margin: 5px;
     padding: 1px;
     width: 90px;
@@ -213,39 +210,54 @@ img{
     }
 }
 
-@media (min-height: 1000px){
+@media (max-height: 820px){
     .caja-tr{
-        width: 607px;
-        height: 607px;
+        width: 457px;
+        width: 457px;
+    }
+
+}
+@media (min-height: 735px){
+    .caja-tr{
+        width: 457px;
+        height: 457px;
+    }
+}
+
+@media (min-height: 900px){
+    .caja-tr{
+        width: 457px;
+        height: 457px;
     }
 }  
+ 
 @media (min-height: 1100px){
     .caja-tr{
-        width: 608px;
-        height: 608px;
+        width: 458px;
+        height: 458px;
     }
 }  
 @media (min-height: 1300px){
     .caja-tr{
-        width: 609px;
-        height: 609px;
+        width: 459px;
+        height: 459px;
     }
 }
 @media (min-height: 1800px){
     .caja-tr{
-        width: 612px;
-        height: 612px;
+        width: 462px;
+        height: 462px;
     }
 }
 @media (min-height: 2700px){
     .caja-tr{
-        width: 618px;
-        height: 618px;
+        width: 468px;
+        height: 468px;
     }
 }
 @media (min-height: 3700px){
     .caja-tr{
-        width: 624px;
-        height: 624px;
+        width: 474px;
+        height: 474px;
     }
 }

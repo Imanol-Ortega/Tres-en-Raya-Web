@@ -1,5 +1,4 @@
 "use strict"
-
 //querys
 const caja1 = document.querySelector(".item1");
 const caja2 = document.querySelector(".item2");
@@ -24,6 +23,7 @@ let gana=false;
 let x=0,y=0;
 let eljug=true;
 let abc=1;
+let dificulti="facil";
 
 //Eventos listener
 
@@ -55,13 +55,22 @@ document.querySelector(".maq").addEventListener("mousedown",()=>{
 
 
 document.querySelector(".facil").addEventListener("mousedown",()=>{
-    dificultad.innerHTML = "Dificultad: Fácil";
+    if(emp==0){
+        dificultad.innerHTML = "Dificultad: Fácil";
+        dificulti="facil";
+    }
 });
 document.querySelector(".medio").addEventListener("mousedown",()=>{
-    dificultad.innerHTML = "Dificultad: Medio";
+    if(emp==0){
+        dificultad.innerHTML = "Dificultad: Medio";
+        dificulti="medio";
+    }
 });
 document.querySelector(".dificil").addEventListener("mousedown",()=>{
-    dificultad.innerHTML = "Dificultad: Dificil";
+    if(emp==0){
+        dificultad.innerHTML = "Dificultad: Dificil";
+        dificulti="dificil";
+    }
 });
 
 document.querySelector(".reiniciar").addEventListener("click",()=>{
@@ -104,11 +113,9 @@ const insertImg= (caja,it)=>{
     if(tr[it]==false){     
         if(turno==1){
           x=dibujar(it,caja,"x","1","O",1,2,x);
-          console.log("x");
         }
         else if(turno==2){
             y=dibujar(it,caja,"o","2","X",2,1,y);
-            console.log("o");
         }
         if(emp==9){
             cemp++;
@@ -127,7 +134,7 @@ const dibujar = (it,caja,tf,nf,tr,d,trn,nn)=>{
     caja.appendChild(img);
     gn[it]=nf;
     turno=trn;
-    n+=ganador(nf,tf);
+    n+=parseInt(ganador(nf,tf));
     document.querySelector(`.${tf}`).innerHTML=`${tf.toUpperCase()}: ${n/d}`;
     document.querySelector(".turn").innerHTML=`Turno: ${tr}`;
     return n; 
@@ -135,52 +142,44 @@ const dibujar = (it,caja,tf,nf,tr,d,trn,nn)=>{
 
 const ganador=(n,t)=>{
     if(gn[0]==n && gn[4]==n && gn[8]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n);
+        return n;
     }
     else if(gn[2]==n && gn[4]==n && gn[6]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n);
+        return n;
     }
     else if(gn[1]==n && gn[4]==n && gn[7]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n);
+        return n;
     }
     else if(gn[3]==n && gn[4]==n && gn[5]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n)
+        return n;
     }
     else if(gn[0]==n && gn[1]==n && gn[2]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n);
+        return n;
     }
     else if(gn[6]==n && gn[7]==n && gn[8]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n);
+        return n;
     }
     else if(gn[0]==n && gn[3]==n && gn[6]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n);
+        return n;
     }
     else if(gn[2]==n && gn[5]==n && gn[8]==n){
-        console.log(`${t} ganó`);
         turno=3;
         avisoGanador(t);
-        return parseInt(n);
+        return n;
     }else{
         emp++;
         return 0;
@@ -222,3 +221,12 @@ const limpiarP = ()=>{
     }
 }
 
+const facil  = (turn)=>{
+
+}
+const med = (turn)=>{
+
+}
+const imposible = (turn)=>{
+
+}
