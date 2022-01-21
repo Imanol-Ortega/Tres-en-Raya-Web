@@ -1,17 +1,8 @@
 "use strict"
 //querys
-const caja1 = document.querySelector(".item1");
-const caja2 = document.querySelector(".item2");
-const caja3 = document.querySelector(".item3");
-const caja4 = document.querySelector(".item4");
-const caja5 = document.querySelector(".item5");
-const caja6 = document.querySelector(".item6");
-const caja7 = document.querySelector(".item7");
-const caja8 = document.querySelector(".item8");
-const caja9 = document.querySelector(".item9");
 const opt = document.querySelector(".options");
 const dificultad = document.querySelector(".dificultades");
-const cajas = document.querySelectorAll(".item");
+const caja = document.querySelectorAll(".item");
 document.querySelector(".difi").style.visibility="hidden";
 
 //variables
@@ -43,20 +34,21 @@ document.querySelector(".jugO").addEventListener("mousedown",()=>{
         document.querySelector(".turn").innerHTML="Turno: O";
     }
 });
-
 document.querySelector(".solo").addEventListener("mousedown",()=>{
-    dificulti = null;
-    document.querySelector(".difi").style.visibility = "hidden";
-    dificultad.style.visibility="hidden";
-    document.querySelector(".modojuego").innerHTML="Modo de juego: 1v1";
+    if(emp==0){
+        dificulti = null;
+        document.querySelector(".difi").style.visibility = "hidden";
+        dificultad.style.visibility="hidden";
+        document.querySelector(".modojuego").innerHTML="Modo de juego: 1v1";
+    }
 });
 document.querySelector(".maq").addEventListener("mousedown",()=>{
-    document.querySelector(".difi").style.visibility = "visible";
-    document.querySelector(".modojuego").innerHTML="Modo de juego: Contra máquina";
-    dificultad.style.visibility="visible";
+    if(emp==0){
+        document.querySelector(".difi").style.visibility = "visible";
+        document.querySelector(".modojuego").innerHTML="Modo de juego: Contra máquina";
+        dificultad.style.visibility="visible";
+    }
 });
-
-
 document.querySelector(".facil").addEventListener("mousedown",()=>{
     if(emp==0){
         dificultad.innerHTML = "Dificultad: Fácil";
@@ -80,36 +72,33 @@ document.querySelector(".reiniciar").addEventListener("click",()=>{
     limpiarP();
 });
 
-
-caja1.addEventListener("mousedown",e=>{
-    insertImg(caja1,0);
+caja[0].addEventListener("mousedown",e=>{
+    insertImg(caja[0],0);
 });
-caja2.addEventListener("mousedown",e=>{
-    insertImg(caja2,1);
+caja[1].addEventListener("mousedown",e=>{
+    insertImg(caja[1],1);
 });
-caja3.addEventListener("mousedown",e=>{
-    insertImg(caja3,2);
+caja[2].addEventListener("mousedown",e=>{
+    insertImg(caja[2],2);
 });
-caja4.addEventListener("mousedown",e=>{
-    insertImg(caja4,3);
+caja[3].addEventListener("mousedown",e=>{
+    insertImg(caja[3],3);
 });
-caja5.addEventListener("mousedown",e=>{
-    insertImg(caja5,4);
+caja[4].addEventListener("mousedown",e=>{
+    insertImg(caja[4],4);
 });
-caja6.addEventListener("mousedown",e=>{
-    insertImg(caja6,5);
+caja[5].addEventListener("mousedown",e=>{
+    insertImg(caja[5],5);
 });
-caja7.addEventListener("mousedown",e=>{
-    insertImg(caja7,6);
+caja[6].addEventListener("mousedown",e=>{
+    insertImg(caja[6],6);
 });
-caja8.addEventListener("mousedown",e=>{
-    insertImg(caja8,7);
+caja[7].addEventListener("mousedown",e=>{
+    insertImg(caja[7],7);
 });
-caja9.addEventListener("mousedown",e=>{
-    insertImg(caja9,8);
+caja[8].addEventListener("mousedown",e=>{
+    insertImg(caja[8],8);
 });
-
-
 
 //funciones 
 const insertImg= (caja,it)=>{
@@ -119,14 +108,24 @@ const insertImg= (caja,it)=>{
             x=dibujar(it,caja,"x","1",2,x);
           if(dificulti=="facil"){
               facil();
+              tr[it]=true;
           }
-          tr[it]=true;
+          else if(dificulti=="medio"){
+              med("1");
+              tr[it]=true;
+          }
+          
         }
         else if(turno==2){
             tr[it]=true;
             y=dibujar(it,caja,"o","2",1,y);
             if(dificulti=="facil"){
                 facil();
+                tr[it]=true;
+            }
+            else if(dificulti=="medio"){
+                med("2");
+                tr[it]=true;
             }
             tr[it]=true;
         }
@@ -238,18 +237,213 @@ const facil = ()=>{
     do{
         if(tr[i]==false){
             if(turno==1){
-                x=dibujar(i,cajas[i],"x","1",2,x);
+                x=dibujar(i,caja[i],"x","1",2,x);
             }
             else if(turno==2){
-                y=dibujar(i,cajas[i],"o","2",1,y);
+                y=dibujar(i,caja[i],"o","2",1,y);
             }
         }
         i++;
     }while(tr[i-1]==true);
     
 }
-const med = ()=>{
-
+const med = (n)=>{
+    if(gn[0]==n && gn[1]==n && gn[2]=="0"){
+        if(turno==1){
+            x=dibujar(2,caja[2],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(2,caja[2],"o","2",1,y);
+        }
+    }
+    else if(gn[0]==n && gn[1]=="0" && gn[2]==n){
+        if(turno==1){
+            x=dibujar(1,caja[1],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(1,caja[1],"o","2",1,y);
+        }
+    }
+    else if(gn[0]=="0" && gn[2]==n && gn[1]==n){
+        if(turno==1){
+            x=dibujar(0,caja[0],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(0,caja[0],"o","2",1,y);
+        }
+    }
+    else if(gn[3]==n && gn[4]==n && gn[5]=="0"){
+        if(turno==1){
+            x=dibujar(5,caja[5],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(5,caja[5],"o","2",1,y);
+        }
+    }
+    else if(gn[3]==n && gn[4]=="0" && gn[5]==n){
+        if(turno==1){
+            x=dibujar(4,caja[4],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(4,caja[4],"o","2",1,y);
+        }
+    }
+    else if(gn[3]=="0" && gn[4]==n && gn[5]==n){
+        if(turno==1){
+            x=dibujar(3,caja[3],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(3,caja[3],"o","2",1,y);
+        }
+    }
+    else if(gn[6]==n && gn[7]==n && gn[8]=="0"){
+        if(turno==1){
+            x=dibujar(8,caja[8],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(8,caja[8],"o","2",1,y);
+        }
+    }
+    else if(gn[6]==n && gn[7]=="0" && gn[8]==n){
+        if(turno==1){
+            x=dibujar(7,caja[7],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(7,caja[7],"o","2",1,y);
+        }
+    }  
+    else if(gn[6]=="0" && gn[7]==n && gn[8]==n){
+        if(turno==1){
+            x=dibujar(6,caja[6],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(6,caja[6],"o","2",1,y);
+        }
+    }
+    else if(gn[0]==n && gn[4]==n && gn[8]=="0"){
+        if(turno==1){
+            x=dibujar(8,caja[8],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(8,caja[8],"o","2",1,y);
+        }
+    }
+    else if(gn[0]==n && gn[4]=="0" && gn[8]==n){
+        if(turno==1){
+            x=dibujar(4,caja[4],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(4,caja[4],"o","2",1,y);
+        }
+    }
+    else if(gn[0]=="0" && gn[4]==n && gn[8]==n){
+        if(turno==1){
+            x=dibujar(0,caja[0],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(0,caja[0],"o","2",1,y);
+        }
+    }
+    else if(gn[2]==n && gn[4]==n && gn[6]=="0"){
+        if(turno==1){
+            x=dibujar(6,caja[6],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(6,caja[6],"o","2",1,y);
+        }
+    }
+    else if(gn[2]==n && gn[4]=="0" && gn[6]==n){
+        if(turno==1){
+            x=dibujar(4,caja[4],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(4,caja[4],"o","2",1,y);
+        }
+    }   
+    else if(gn[2]=="0" && gn[4]==n && gn[6]==n){
+        if(turno==1){
+            x=dibujar(2,caja[2],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(2,caja[2],"o","2",1,y);
+        }
+    }
+    else if(gn[0]==n && gn[3]==n && gn[6]=="0"){
+        if(turno==1){
+            x=dibujar(6,caja[6],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(6,caja[6],"o","2",1,y);
+        }
+    }
+    else if(gn[0]==n && gn[3]=="0" && gn[6]==n){
+        if(turno==1){
+            x=dibujar(3,caja[3],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(3,caja[3],"o","2",1,y);
+        }
+    }
+    else if(gn[0]=="0" && gn[3]==n && gn[6]==n){
+        if(turno==1){
+            x=dibujar(0,caja[0],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(0,caja[0],"o","2",1,y);
+        }
+    }
+    else if(gn[1]==n && gn[4]==n && gn[7]=="0"){
+        if(turno==1){
+            x=dibujar(7,caja[7],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(7,caja[7],"o","2",1,y);
+        }
+    }
+    else if(gn[1]==n && gn[4]=="0" && gn[7]==n){
+        if(turno==1){
+            x=dibujar(4,caja[4],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(4,caja[4],"o","2",1,y);
+        }
+    }
+    else if(gn[1]=="0" && gn[4]==n && gn[7]==n){
+        if(turno==1){
+            x=dibujar(1,caja[1],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(1,caja[1],"o","2",1,y);
+        }
+    }
+    else if(gn[2]==n && gn[5]==n && gn[8]=="0"){
+        if(turno==1){
+            x=dibujar(8,caja[8],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(8,caja[8],"o","2",1,y);
+        }
+    }
+    else if(gn[2]==n && gn[5]=="0" && gn[8]==n){
+        if(turno==1){
+            x=dibujar(5,caja[5],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(5,caja[5],"o","2",1,y);
+        }
+    }
+    else if(gn[2]=="0" && gn[5]==n && gn[8]==n){
+        if(turno==1){
+            x=dibujar(2,caja[2],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(2,caja[2],"o","2",1,y);
+        }
+    }
+    else{
+        facil();
+    }
+    
 }
 const imposible = ()=>{
 
