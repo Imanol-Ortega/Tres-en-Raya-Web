@@ -11,6 +11,7 @@ const caja8 = document.querySelector(".item8");
 const caja9 = document.querySelector(".item9");
 const opt = document.querySelector(".options");
 const dificultad = document.querySelector(".dificultades");
+const cajas = document.querySelectorAll(".item");
 document.querySelector(".difi").style.visibility="hidden";
 
 //variables
@@ -21,9 +22,10 @@ let emp=0;
 let cemp=0;
 let gana=false;
 let x=0,y=0;
+let i=0;
 let eljug=true;
 let abc=1;
-let dificulti="facil";
+let dificulti="";
 
 //Eventos listener
 
@@ -113,16 +115,20 @@ caja9.addEventListener("mousedown",e=>{
 const insertImg= (caja,it)=>{
     if(tr[it]==false){     
         if(turno==1){
+            tr[it]=true;
             x=dibujar(it,caja,"x","1",2,x);
           if(dificulti=="facil"){
               facil();
           }
+          tr[it]=true;
         }
         else if(turno==2){
+            tr[it]=true;
             y=dibujar(it,caja,"o","2",1,y);
             if(dificulti=="facil"){
                 facil();
             }
+            tr[it]=true;
         }
         if(emp==9){
             cemp++;
@@ -130,7 +136,6 @@ const insertImg= (caja,it)=>{
             document.querySelector(".emp").innerHTML = `Empates: ${cemp}`; 
             emp=0;
         }
-        tr[it]=true;
     }
 }
 const dibujar = (it,caja,tf,nf,trn,nn)=>{
@@ -210,6 +215,7 @@ const avisoGanador = gan =>{
 const limpiarP = ()=>{
     turno=abc;
     emp=0;
+    i=0;
     if(turno==1){
         document.querySelector(".turn").innerHTML=`Turno: X`;
     }else{
@@ -228,29 +234,23 @@ const limpiarP = ()=>{
     }
 }
 
-const facil  = ()=>{
-    for(let i=0;i<9;i++){
-        let n=i;
-        if(tr[n]==false){
-            let caja = document.querySelector(`.item${n}`);
+const facil = ()=>{
+    do{
+        if(tr[i]==false){
             if(turno==1){
-                x=dibujar(n,caja,"x","1",2,x);
-                console.log("1");
-                break;
+                x=dibujar(i,cajas[i],"x","1",2,x);
             }
             else if(turno==2){
-                y=dibujar(n,caja,"o","2",1,y);
-                console.log("2");
-                break;
+                y=dibujar(i,cajas[i],"o","2",1,y);
             }
-            console.log("3");
         }
-        console.log("4");
-    }
+        i++;
+    }while(tr[i-1]==true);
+    
 }
-const med = (turn)=>{
+const med = ()=>{
 
 }
-const imposible = (turn)=>{
+const imposible = ()=>{
 
 }
