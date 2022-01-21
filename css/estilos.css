@@ -138,6 +138,7 @@ img{
     color: #333;
 }
 .ganador{
+    margin-top: 355px;
     position: absolute;
     z-index: 10;
     width: 300px;

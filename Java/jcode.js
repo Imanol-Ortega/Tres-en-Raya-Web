@@ -43,6 +43,7 @@ document.querySelector(".jugO").addEventListener("mousedown",()=>{
 });
 
 document.querySelector(".solo").addEventListener("mousedown",()=>{
+    dificulti = null;
     document.querySelector(".difi").style.visibility = "hidden";
     dificultad.style.visibility="hidden";
     document.querySelector(".modojuego").innerHTML="Modo de juego: 1v1";
@@ -112,10 +113,16 @@ caja9.addEventListener("mousedown",e=>{
 const insertImg= (caja,it)=>{
     if(tr[it]==false){     
         if(turno==1){
-          x=dibujar(it,caja,"x","1","O",1,2,x);
+            x=dibujar(it,caja,"x","1",2,x);
+          if(dificulti=="facil"){
+              facil();
+          }
         }
         else if(turno==2){
-            y=dibujar(it,caja,"o","2","X",2,1,y);
+            y=dibujar(it,caja,"o","2",1,y);
+            if(dificulti=="facil"){
+                facil();
+            }
         }
         if(emp==9){
             cemp++;
@@ -126,7 +133,7 @@ const insertImg= (caja,it)=>{
         tr[it]=true;
     }
 }
-const dibujar = (it,caja,tf,nf,tr,d,trn,nn)=>{
+const dibujar = (it,caja,tf,nf,trn,nn)=>{
     let n=nn;
     let img = document.createElement("IMG");
     img.classList.add("img");
@@ -135,8 +142,8 @@ const dibujar = (it,caja,tf,nf,tr,d,trn,nn)=>{
     gn[it]=nf;
     turno=trn;
     n+=parseInt(ganador(nf,tf));
-    document.querySelector(`.${tf}`).innerHTML=`${tf.toUpperCase()}: ${n/d}`;
-    document.querySelector(".turn").innerHTML=`Turno: ${tr}`;
+    document.querySelector(`.${tf}`).innerHTML=`${tf.toUpperCase()}: ${n/parseInt(nf)}`;
+    document.querySelector(".turn").innerHTML=`Turno: ${tf.toUpperCase()}`;
     return n; 
 }
 
@@ -221,8 +228,25 @@ const limpiarP = ()=>{
     }
 }
 
-const facil  = (turn)=>{
-
+const facil  = ()=>{
+    for(let i=0;i<9;i++){
+        let n=i;
+        if(tr[n]==false){
+            let caja = document.querySelector(`.item${n}`);
+            if(turno==1){
+                x=dibujar(n,caja,"x","1",2,x);
+                console.log("1");
+                break;
+            }
+            else if(turno==2){
+                y=dibujar(n,caja,"o","2",1,y);
+                console.log("2");
+                break;
+            }
+            console.log("3");
+        }
+        console.log("4");
+    }
 }
 const med = (turn)=>{
 
