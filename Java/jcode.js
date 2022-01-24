@@ -104,30 +104,24 @@ caja[8].addEventListener("mousedown",e=>{
 const insertImg= (caja,it)=>{
     if(tr[it]==false){     
         if(turno==1){
-            tr[it]=true;
             x=dibujar(it,caja,"x","1",2,x);
           if(dificulti=="facil"){
               facil();
-              tr[it]=true;
           }
           else if(dificulti=="medio"){
               med("1");
-              tr[it]=true;
           }
           
         }
         else if(turno==2){
-            tr[it]=true;
+            
             y=dibujar(it,caja,"o","2",1,y);
             if(dificulti=="facil"){
                 facil();
-                tr[it]=true;
             }
             else if(dificulti=="medio"){
                 med("2");
-                tr[it]=true;
             }
-            tr[it]=true;
         }
         if(emp==9){
             cemp++;
@@ -148,6 +142,7 @@ const dibujar = (it,caja,tf,nf,trn,nn)=>{
     n+=parseInt(ganador(nf,tf));
     document.querySelector(`.${tf}`).innerHTML=`${tf.toUpperCase()}: ${n/parseInt(nf)}`;
     document.querySelector(".turn").innerHTML=`Turno: ${tf.toUpperCase()}`;
+    tr[it]=true;
     return n; 
 }
 
@@ -238,9 +233,11 @@ const facil = ()=>{
         if(tr[i]==false){
             if(turno==1){
                 x=dibujar(i,caja[i],"x","1",2,x);
+                return;
             }
             else if(turno==2){
                 y=dibujar(i,caja[i],"o","2",1,y);
+                return;
             }
         }
         i++;
