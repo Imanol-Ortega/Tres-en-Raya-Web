@@ -446,5 +446,5 @@ const med = (n)=>{
     
 }
 const imposible = ()=>{
-
+    //falta este
 }
