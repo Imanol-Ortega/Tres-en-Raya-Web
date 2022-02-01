@@ -10,6 +10,7 @@ h1{
     width: 100%;
     height: 30px;
     z-index: 1;
+    padding: 0;
 }
 nav ul{
     border-top-left-radius: 5px;
@@ -58,6 +59,7 @@ li:hover{
     border-radius: 10px;
     z-index: 1;
     margin: auto;
+    border-color: #333;
 }
 .barra{
     display: flex;
