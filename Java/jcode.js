@@ -1,6 +1,5 @@
 "use strict"
 //querys
-const opt = document.querySelector(".options");
 const dificultad = document.querySelector(".dificultades");
 const caja = document.querySelectorAll(".item");
 document.querySelector(".difi").style.visibility="hidden";
@@ -14,7 +13,6 @@ let cemp=0;
 let gana=false;
 let x=0,y=0;
 let i=0;
-let eljug=true;
 let abc=1;
 let dificulti="";
 
