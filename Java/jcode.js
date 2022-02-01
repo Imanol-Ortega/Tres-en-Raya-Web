@@ -109,10 +109,8 @@ const insertImg= (caja,it)=>{
           else if(dificulti=="medio"){
               med("1");
           }
-          
         }
         else if(turno==2){
-            
             y=dibujar(it,caja,"o","2",1,y);
             if(dificulti=="facil"){
                 facil();
@@ -144,7 +142,6 @@ const dibujar = (it,caja,tf,nf,trn,nn)=>{
     }else{
         document.querySelector(".turn").innerHTML=`Turno: X`;
     }
-    
     tr[it]=true;
     return n; 
 }
