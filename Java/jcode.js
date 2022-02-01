@@ -139,7 +139,12 @@ const dibujar = (it,caja,tf,nf,trn,nn)=>{
     turno=trn;
     n+=parseInt(ganador(nf,tf));
     document.querySelector(`.${tf}`).innerHTML=`${tf.toUpperCase()}: ${n/parseInt(nf)}`;
-    document.querySelector(".turn").innerHTML=`Turno: ${tf.toUpperCase()}`;
+    if(tf==1){
+        document.querySelector(".turn").innerHTML=`Turno: O`;
+    }else{
+        document.querySelector(".turn").innerHTML=`Turno: X`;
+    }
+    
     tr[it]=true;
     return n; 
 }
@@ -223,6 +228,7 @@ const limpiarP = ()=>{
     }
     if(gana==true){
         document.querySelector(".ganador").remove();
+        gana=false;
     }
 }
 
