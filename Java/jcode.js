@@ -3,7 +3,6 @@
 const dificultad = document.querySelector(".dificultades");
 const caja = document.querySelectorAll(".item");
 document.querySelector(".difi").style.visibility="hidden";
-
 //variables
 let tr=[false,false,false,false,false,false,false,false,false];
 let gn=["0","0","0","0","0","0","0","0","0"];
@@ -16,9 +15,7 @@ let i=0;
 let abc=1;
 let dificulti="";
 let cn=0;
-
 //Eventos listener
-
 document.querySelector(".jugX").addEventListener("mousedown",()=>{
     if(emp==0){
         abc=1;
@@ -66,11 +63,9 @@ document.querySelector(".dificil").addEventListener("mousedown",()=>{
         dificulti="dificil";
     }
 });
-
 document.querySelector(".reiniciar").addEventListener("click",()=>{
     limpiarP();
 });
-
 caja[0].addEventListener("mousedown",e=>{
     insertImg(caja[0],0);
 });
@@ -98,7 +93,6 @@ caja[7].addEventListener("mousedown",e=>{
 caja[8].addEventListener("mousedown",e=>{
     insertImg(caja[8],8);
 });
-
 //funciones 
 const insertImg= (caja,it)=>{
     if(tr[it]==false){     
@@ -250,7 +244,6 @@ const facil = ()=>{
         }
         i++;
     }while(tr[i-1]==true);
-    
 }
 const med = (n)=>{
     if(gn[0]==n && gn[1]==n && gn[2]=="0"){
@@ -448,7 +441,6 @@ const med = (n)=>{
     else{
         facil();
     }
-    
 }
 const imposible = (n)=>{
     if(tr[4]==false){
