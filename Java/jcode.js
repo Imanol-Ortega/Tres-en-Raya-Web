@@ -15,6 +15,7 @@ let x=0,y=0;
 let i=0;
 let abc=1;
 let dificulti="";
+let cn=0;
 
 //Eventos listener
 
@@ -103,12 +104,15 @@ const insertImg= (caja,it)=>{
     if(tr[it]==false){     
         if(turno==1){
             x=dibujar(it,caja,"x","1",2,x);
-          if(dificulti=="facil"){
-              facil();
-          }
-          else if(dificulti=="medio"){
-              med("1");
-          }
+            if(dificulti=="facil"){
+                facil();
+            }
+            else if(dificulti=="medio"){
+                med("1");
+            }
+            else if(dificulti=="dificil"){
+                imposible("1");
+            }
         }
         else if(turno==2){
             y=dibujar(it,caja,"o","2",1,y);
@@ -117,6 +121,9 @@ const insertImg= (caja,it)=>{
             }
             else if(dificulti=="medio"){
                 med("2");
+            }
+            else if(dificulti=="dificil"){
+                imposible("2");
             }
         }
         if(emp==9){
@@ -137,15 +144,15 @@ const dibujar = (it,caja,tf,nf,trn,nn)=>{
     turno=trn;
     n+=parseInt(ganador(nf,tf));
     document.querySelector(`.${tf}`).innerHTML=`${tf.toUpperCase()}: ${n/parseInt(nf)}`;
-    if(tf==1){
+    if(tf=="x"){
         document.querySelector(".turn").innerHTML=`Turno: O`;
     }else{
         document.querySelector(".turn").innerHTML=`Turno: X`;
     }
     tr[it]=true;
+    cn++;
     return n; 
 }
-
 const ganador=(n,t)=>{
     if(gn[0]==n && gn[4]==n && gn[8]==n){
         turno=3;
@@ -208,6 +215,7 @@ const avisoGanador = gan =>{
 }
 const limpiarP = ()=>{
     turno=abc;
+    cn=0;
     emp=0;
     i=0;
     if(turno==1){
@@ -228,7 +236,6 @@ const limpiarP = ()=>{
         gana=false;
     }
 }
-
 const facil = ()=>{
     do{
         if(tr[i]==false){
@@ -443,6 +450,45 @@ const med = (n)=>{
     }
     
 }
-const imposible = ()=>{
-    //falta este
+const imposible = (n)=>{
+    if(tr[4]==false){
+        if(turno==1){
+            x=dibujar(4,caja[4],"x","1",2,x);
+        }
+        else if(turno == 2){
+            y=dibujar(4,caja[4],"o","2",1,y);
+        }
+    }
+    else if(cn<4 && (gn[2]=="1" && gn[6]=="1" && tr[4]==true) || (gn[2]=="2" && gn[6]=="2" && tr[4]==true)){
+        if(turno==1){
+            x=dibujar(1,caja[1],"x","1",2,x);
+        }
+        else if(turno ==2){
+            y=dibujar(1,caja[1],"o","2",1,y);
+        }
+    }
+    else if(cn<5 && (gn[1]=="1" && gn[4]=="1" && tr[7]==false) || (gn[1]=="2" && gn[4]=="2" && tr[7]==false)){
+        if(turno==1){
+            x=dibujar(7,caja[7],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(7,caja[7],"o","2",1,y);
+        }
+    }
+    else if(cn<6 &&(gn[0]=="1" && gn[1]=="1" && tr[2]==false) || (gn[0]=="2" && gn[1]=="2" && tr[2]==false)){
+        if(turno==1){
+            x=dibujar(2,caja[2],"x","1",2,x);
+        }
+        else if(turno==2){
+            y=dibujar(2,caja[2],"o","2",1,y);
+        }
+    }
+    else{
+        if(turno==1){
+            med("2");
+        }
+        else if(turno==2){
+            med("1");
+        }
+    }
 }
