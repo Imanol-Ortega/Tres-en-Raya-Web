@@ -451,7 +451,7 @@ const imposible = (n)=>{
             y=dibujar(4,caja[4],"o","2",1,y);
         }
     }
-    else if(cn<4 && (gn[2]=="1" && gn[6]=="1" && tr[4]==true) || (gn[2]=="2" && gn[6]=="2" && tr[4]==true)){
+    else if(cn<4 && (gn[2]=="1" && gn[6]=="1" && tr[4]==true && tr[1]==false) || (gn[2]=="2" && gn[6]=="2" && tr[4]==true && tr[1]==false)){
         if(turno==1){
             x=dibujar(1,caja[1],"x","1",2,x);
         }
